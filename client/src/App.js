@@ -1,24 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter } from "react-router-dom"
+import Router from './routes/Router';
+import { Suspense } from 'react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This is just the beginning
-        </p>
-        <a
-          className="App-link"
-          href="https://github.com/whishad/LDE"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Read About LDE
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Suspense fallback="loading...">
+        <Router/>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
