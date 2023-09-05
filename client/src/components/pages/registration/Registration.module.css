@@ -47,3 +47,12 @@ body {
 .btn:active{
     background-color: var(--neon-blue);
 }
+
+.validity_message{
+    position:absolute;
+    width: 300px;
+    margin-top: -72px;
+    padding: 20px;
+    background-color: var(--vermilion);
+    color:#fff;
+}
