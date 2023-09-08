@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { setInLocalStorage} from '../../../globalfunctions/local_storarge_functions'
 import styles from './Registration.module.css'
 
 function Registration(){
@@ -38,7 +39,9 @@ function Registration(){
             {validity_messages.map(obj => obj.active ? 
             <p className={styles["validity_message"]} key={obj.id}>{obj.message}</p> : null)}
             <input name="username" type="text" placeholder="your name" value={inpval} onChange={handleInputChange} className={styles["input"]}/>
-            <button className={styles["btn"]} onClick={() => analyzeInputValue() && console.log("text has been validated")}>Register</button>
+            <button 
+            className={styles["btn"]} 
+            onClick={() => analyzeInputValue() && setInLocalStorage("username", inpval)}>Register</button>
         </div>
     )
 }
