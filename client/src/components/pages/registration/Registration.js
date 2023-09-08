@@ -41,13 +41,15 @@ function Registration(){
     }
 
     return ( 
-        <div className={styles["registration-box"]}>
-            {validity_messages.map(obj => obj.active ? 
-            <p className={styles["validity_message"]} key={obj.id}>{obj.message}</p> : null)}
-            <input name="username" type="text" placeholder="your name" value={inpval} onChange={handleInputChange} className={styles["input"]}/>
-            <button 
-            className={styles["btn"]} 
-            onClick={() => analyzeInputValue() && setInLocalStorage("username", inpval, ()=>navigate("/messenger"))}>Register</button>
+        <div className={styles["registration-page"]}>
+            <div className={styles["registration-box"]}>
+                {validity_messages.map(obj => obj.active ? 
+                <p className={styles["validity_message"]} key={obj.id}>{obj.message}</p> : null)}
+                <input name="username" type="text" placeholder="your name" value={inpval} onChange={handleInputChange} className={styles["input"]}/>
+                <button 
+                className={styles["btn"]} 
+                onClick={() => analyzeInputValue() && setInLocalStorage("username", inpval, ()=>navigate("/messenger"))}>Register</button>
+            </div>
         </div>
     )
 }
