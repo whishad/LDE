@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { setInLocalStorage} from '../../../globalfunctions/local_storarge_functions'
+import { useEffect, useState } from 'react'
+import { setInLocalStorage, getFromLocalStorage } from '../../../globalfunctions/local_storarge_functions'
+import { useNavigate } from "react-router-dom"
 import styles from './Registration.module.css'
 
 function Registration(){
@@ -9,6 +10,11 @@ function Registration(){
         {id:1, message: "Name must contain at least one symbol", active:false},
         {id:2, message: "Name cannot exceed 15 characters", active:false},
     ])
+    const navigate = useNavigate() // to navigate between pages
+
+    useEffect(() => { // to check if the user is logged in
+        if(getFromLocalStorage("username")) navigate("/messenger")
+    }, [navigate])
 
     const handleInputChange = (e) => { // state value update function
         setVal(e.target.value)
@@ -41,7 +47,7 @@ function Registration(){
             <input name="username" type="text" placeholder="your name" value={inpval} onChange={handleInputChange} className={styles["input"]}/>
             <button 
             className={styles["btn"]} 
-            onClick={() => analyzeInputValue() && setInLocalStorage("username", inpval)}>Register</button>
+            onClick={() => analyzeInputValue() && setInLocalStorage("username", inpval, ()=>navigate("/messenger"))}>Register</button>
         </div>
     )
 }
