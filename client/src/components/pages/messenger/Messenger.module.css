@@ -1,0 +1,30 @@
+.navbar{
+    width: 300px;
+    height: 552px;
+    border: 5px solid var(--jet);
+    overflow-y: auto;
+}
+
+.navbar::-webkit-scrollbar{
+    display: none;
+}
+
+.point-link-button{
+    width: 250px;
+    height: 70px;
+    margin: 20px 0 0 25px;
+    cursor: pointer;
+    border: 4px solid #323232;
+    color: #000;
+    background-color: white;
+    font-family: B612;
+    font-size: 36px;
+}
+
+.point-link-button:first-child{
+    margin-top: 30px;
+}
+
+.point-link-button:last-child{
+    margin-bottom: 30px;
+}

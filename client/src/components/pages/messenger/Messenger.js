@@ -5,9 +5,9 @@ import NavigationBar from "./components/NavigationBar"
 function Messenger(){
     return (
         <>
-            <Message/>
+            {/* <Message/> */}
             <NavigationBar/>
-            <MessageForm/>
+            {/* <MessageForm/> */}
         </>
     )
 }
