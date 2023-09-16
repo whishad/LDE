@@ -1,6 +1,14 @@
+import Message from "./components/Message"
+import MessageForm from "./components/MessageForm"
+import NavigationBar from "./components/NavigationBar"
+
 function Messenger(){
     return (
-        <p>this is the messenger page</p>
+        <>
+            <Message/>
+            <NavigationBar/>
+            <MessageForm/>
+        </>
     )
 }
 
