@@ -1,3 +1,7 @@
+.messenger-box{
+    display: flex;
+}
+
 .navbar{
     width: 300px;
     height: 552px;
@@ -27,4 +31,40 @@
 
 .point-link-button:last-child{
     margin-bottom: 30px;
+}
+
+.message-form{
+    width: 933px;
+    display: flex;
+    align-self: end;
+}
+
+.message-input{
+    width: 96%;
+    height: 89px;
+    padding-left: 25px;
+    border: 5px solid var(--jet);
+    border-left: 0px;
+    font-family: Rubik;
+    font-size: 36px;
+    font-weight: 400;
+    outline-width: 0;
+    overflow-y: auto;
+}
+
+.message-button{
+    width: 100px;
+    height: 100px;
+    border: 5px solid var(--jet);
+    border-left: 0;
+    background: var(--neon-blue);
+    cursor: pointer;
+}
+
+.message-button:hover{
+    background-color: #6086e7;
+}
+
+.message-button:active{
+    background-color: var(--neon-blue);
 }
