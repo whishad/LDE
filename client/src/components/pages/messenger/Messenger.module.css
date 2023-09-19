@@ -68,3 +68,74 @@
 .message-button:active{
     background-color: var(--neon-blue);
 }
+
+.message-box{
+    width: 918px;
+    height: 446px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 15px 0px 0px 15px;
+    overflow-y: auto;
+}
+
+.message-box::-webkit-scrollbar{
+    width: 12px;
+}
+
+.message-box::-webkit-scrollbar-track{
+    background-color: #ebebeb;
+}
+
+.message-box::-webkit-scrollbar-thumb{
+    background-color: #b9b9b9;
+}
+
+.message-box::-webkit-scrollbar-thumb:hover{
+    background-color: #5786ff;
+}
+
+.message{
+    display: flex;
+}
+
+.user-avatar{
+    margin-right: 10px;
+    user-select: none;
+}
+
+.message-info-div{
+    max-width: 490px;
+    height: max-content;
+    margin-bottom: 30px;
+    padding: 0px 10px 6px 10px;
+    background: #2764FF;
+}
+
+.message-author-name{
+    color: #FFF;
+    font-family: Exo 2;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.message-content-wrapper{
+    margin: -6px 0px 6px 0px;
+    padding: 5px 10px 10px 10px;
+    background-color: #FFF;
+}
+
+.message-content{
+    font-family: Rubik;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.message-sent-time{
+    margin: 0;
+    color: #FFF;
+    font-family: Rubik;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: right;
+}

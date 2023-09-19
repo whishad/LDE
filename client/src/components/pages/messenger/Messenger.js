@@ -5,13 +5,13 @@ import styles from './Messenger.module.css'
 
 function Messenger(){
     return (
-        <>
-            {/* <Message/> */}
-            <div className={styles["messenger-box"]}>
-                <NavigationBar/>
-                <MessageForm/>
+        <div className={styles["messenger-box"]}>
+            <NavigationBar/>
+            <div>
+                <Message/>
             </div>
-        </>
+            <MessageForm/>
+        </div>
     )
 }
 
