@@ -1,14 +1,16 @@
+import { NavLink } from 'react-router-dom'
 import styles from '../Messenger.module.css'
 
-const NavigationBar = () => {
+const NavigationBar = ({points}) => {
     return (
         <div className={styles["navbar"]}>
-            <button className={styles["point-link-button"]}>point1</button>
-            <button className={styles["point-link-button"]}>point2</button>
-            <button className={styles["point-link-button"]}>point3</button>
-            <button className={styles["point-link-button"]}>point4</button>
-            <button className={styles["point-link-button"]}>point5</button>
-            <button className={styles["point-link-button"]}>point6</button>
+            {points.map(point => 
+                <NavLink key={point.id} to={`http://localhost:3000/${point.point_name}`}>
+                    <button className={styles["point-link-button"]}>
+                        {point.point_name}
+                    </button>
+                </NavLink>
+            )}
         </div>
     )
 }

@@ -4,7 +4,8 @@
 
 .navbar{
     width: 300px;
-    height: 609px;
+    height: 569px;
+    padding: 10px 0 30px 0;
     border: 5px solid var(--jet);
     overflow-y: auto;
 }
@@ -23,14 +24,6 @@
     background-color: white;
     font-family: B612;
     font-size: 36px;
-}
-
-.point-link-button:first-child{
-    margin-top: 30px;
-}
-
-.point-link-button:last-child{
-    margin-bottom: 30px;
 }
 
 .message-form{
