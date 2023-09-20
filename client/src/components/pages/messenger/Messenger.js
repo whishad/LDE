@@ -16,11 +16,20 @@ function Messenger(){
         },
     ])
 
+    const [messages, setMessages] = useState([
+        {
+            author: "George",
+            author_pic_color: "#ffc31f",
+            content: "My name is George, i love pizza",
+            sent_time: "10:00",
+        },
+    ])
+
     return (
         <div className={styles["messenger-box"]}>
             <NavigationBar points={points}/>
             <div>
-                <Message/>
+                <Message messages={messages}/>
             </div>
             <MessageForm/>
         </div>
