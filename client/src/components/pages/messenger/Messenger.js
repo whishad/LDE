@@ -1,10 +1,10 @@
-import { useState } from "react"
-import { useParams } from "react-router"
-
+import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router"
 import Message from "./components/Message"
 import MessageForm from "./components/MessageForm"
 import NavigationBar from "./components/NavigationBar"
 import styles from './Messenger.module.css'
+import { getFromLocalStorage } from "../../../globalfunctions/local_storarge_functions"
 
 function Messenger(){
     const [points, setPoints] = useState([ // state to store chats(points) info 
@@ -29,6 +29,12 @@ function Messenger(){
     ])
 
     const current_point = useParams() // getting current chat(point) name
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(!getFromLocalStorage("username")) navigate("*")
+    }, )
 
     return (
         <div className={styles["messenger-box"]}>
