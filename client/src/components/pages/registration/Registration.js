@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { setInLocalStorage, getFromLocalStorage } from '../../../globalfunctions/local_storarge_functions'
 import { useNavigate } from "react-router-dom"
 import styles from './Registration.module.css'
+import { protectedRedirect } from '../../../globalfunctions/redirect_functions'
 
 function Registration(){
     const [inpval, setVal] = useState("") // state to store input value 
@@ -13,7 +14,7 @@ function Registration(){
     const navigate = useNavigate() // to navigate between pages
 
     useEffect(() => { // to check if the user is logged in
-        if(getFromLocalStorage("username")) navigate("/messenger")
+        protectedRedirect(navigate, "/messenger", (x) => {return x})
     }, [navigate])
 
     const handleInputChange = (e) => { // state value update function

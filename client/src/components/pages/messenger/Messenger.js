@@ -4,7 +4,7 @@ import Message from "./components/Message"
 import MessageForm from "./components/MessageForm"
 import NavigationBar from "./components/NavigationBar"
 import styles from './Messenger.module.css'
-import { getFromLocalStorage } from "../../../globalfunctions/local_storarge_functions"
+import { protectedRedirect } from "../../../globalfunctions/redirect_functions"
 
 function Messenger(){
     const [points, setPoints] = useState([ // state to store chats(points) info 
@@ -33,8 +33,8 @@ function Messenger(){
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(!getFromLocalStorage("username")) navigate("*")
-    }, )
+        protectedRedirect(navigate, "*", (x) => {return !x})
+    })
 
     return (
         <div className={styles["messenger-box"]}>
