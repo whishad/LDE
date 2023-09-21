@@ -12,6 +12,7 @@ function Router(){
             <Route path="*" element={<Navigate to={navigation_address}/>}/>
             <Route path="registration" element={<Registration/>}/>
             <Route path="messenger" element={<Messenger/>}/>
+            <Route path="messenger/:point_name" element={<Messenger/>}/>
         </Routes>
     )
 }
