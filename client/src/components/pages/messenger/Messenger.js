@@ -16,12 +16,13 @@ function Messenger(){
         },
     ])
 
-    const [messages, setMessages] = useState([
+    const [messages, setMessages] = useState([ // state to store messages
         {
             author: "George",
             author_pic_color: "#ffc31f",
             content: "My name is George, i love pizza",
             sent_time: "10:00",
+            id: 1,
         },
     ])
 

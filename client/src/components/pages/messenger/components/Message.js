@@ -3,7 +3,7 @@ import styles from "../Messenger.module.css"
 const Message = ({messages}) => {
     return (
         messages.map( message => 
-            <div className={styles["message-box"]}>
+            <div key={message.id} className={styles["message-box"]}>
                 <div className={styles["message"]}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" viewBox="0 0 66 66" fill="none" className={styles["user-avatar"]}>
                         <circle cx="33" cy="33" r="33" fill={message.author_pic_color}/>
