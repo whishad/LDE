@@ -5,7 +5,7 @@ const NavigationBar = ({points}) => {
     return (
         <div className={styles["navbar"]}>
             {points.map(point => 
-                <NavLink key={point.id} to={`http://localhost:3000/${point.point_name}`}>
+                <NavLink key={point.id} to={`http://localhost:3000/messenger/${point.point_name}`}>
                     <button className={styles["point-link-button"]}>
                         {point.point_name}
                     </button>
