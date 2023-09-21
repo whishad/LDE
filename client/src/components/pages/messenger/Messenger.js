@@ -34,6 +34,10 @@ function Messenger(){
 
     useEffect(() => {
         protectedRedirect(navigate, "*", (x) => {return !x})
+        if(current_point.point_name){
+            const match_name = points.filter(point => point.point_name === current_point.point_name)
+            if(!match_name.length) navigate("*")
+        }
     })
 
     return (
