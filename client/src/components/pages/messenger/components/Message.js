@@ -12,8 +12,8 @@ const Message = ({messages}) => {
                     </svg>
                     <div className={styles["message-info-div"]}>
                         <p className={styles["message-author-name"]}>{message.author}</p>
-                        <div className={styles["message-content-wrapper"]}>
-                            <span className={styles["message-content"]}>
+                        <div className={styles["message-text-content-wrapper"]}>
+                            <span className={styles["message-text-content"]}>
                                 {message.content}
                             </span>
                         </div>

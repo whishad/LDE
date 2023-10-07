@@ -22,6 +22,7 @@ function Messenger(){
         {
             author: "George",
             author_pic_color: "#ffc31f",
+            message_type: "text",
             content: "My name is George, i love pizza",
             sent_time: "10:00",
             id: 1,

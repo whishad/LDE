@@ -113,13 +113,13 @@
     font-weight: 700;
 }
 
-.message-content-wrapper{
+.message-text-content-wrapper{
     margin: -6px 0px 6px 0px;
     padding: 5px 10px 10px 10px;
     background-color: #FFF;
 }
 
-.message-content{
+.message-text-content{
     font-family: Rubik;
     font-size: 20px;
     font-weight: 400;
