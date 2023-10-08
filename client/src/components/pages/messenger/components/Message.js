@@ -1,6 +1,48 @@
 import styles from "../Messenger.module.css"
+import file_icon from "../../../../resources/images/file-icon.svg"
 
 const Message = ({messages}) => {
+    const generateMessageStructure = (message) => { //generates a message html structure
+        switch (message.message_type){
+            case "text":
+                return (
+                    <div className={styles["message-text-content-wrapper"]}>
+                        <span className={styles["message-text-content"]}>
+                            {message.content}
+                        </span>
+                    </div>
+                )
+            case "reply":
+                return (
+                    <>
+                        <div className={`${styles["message-text-content-wrapper"]} ${styles["message-reply-content-wrapper"]}`}>
+                            <span className={`${styles["message-text-content"]} ${styles["message-reply-content"]}`}>
+                                {messages.map(msg => {
+                                    console.log(msg)
+                                    if(msg.id === message.replied_message_id){
+                                        return <><b>{msg.author}:</b> {msg.content.slice(0, (message.content.length + 5) - msg.author.length)}...</>
+                                    }
+                                })}
+                            </span>
+                        </div>
+                        <div className={styles["message-text-content-wrapper"]}>
+                            <span className={styles["message-text-content"]}>
+                                {message.content}
+                            </span>
+                        </div>
+                    </>
+                )
+            case "file":
+                return (
+                    <div className={styles["message-text-content-wrapper"]}>
+                        <span className={styles["message-text-content"]}>
+                            <img src={file_icon} alt="image" className={styles["file-icon"]}/>
+                            {message.content}
+                        </span>
+                    </div>
+                )
+        }
+    }
     return (
         <div className={styles["message-box"]}>
         {        
@@ -12,11 +54,7 @@ const Message = ({messages}) => {
                     </svg>
                     <div className={styles["message-info-div"]}>
                         <p className={styles["message-author-name"]}>{message.author}</p>
-                        <div className={styles["message-text-content-wrapper"]}>
-                            <span className={styles["message-text-content"]}>
-                                {message.content}
-                            </span>
-                        </div>
+                        {generateMessageStructure(message)}
                         <p className={styles["message-sent-time"]}>{message.sent_time}</p>
                     </div>
                 </div>

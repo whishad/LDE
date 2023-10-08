@@ -125,6 +125,15 @@
     font-weight: 400;
 }
 
+.message-reply-content-wrapper {
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 16px;
+}
+
+.message-reply-content{
+    font-size: 15px;
+}
+
 .message-sent-time{
     margin: 0;
     color: #FFF;
@@ -132,4 +141,8 @@
     font-size: 15px;
     font-weight: 400;
     text-align: right;
+}
+
+.file-icon {
+    margin: 1px 10px -8px 3px;
 }
