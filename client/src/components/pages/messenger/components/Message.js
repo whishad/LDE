@@ -18,9 +18,8 @@ const Message = ({messages}) => {
                         <div className={`${styles["message-text-content-wrapper"]} ${styles["message-reply-content-wrapper"]}`}>
                             <span className={`${styles["message-text-content"]} ${styles["message-reply-content"]}`}>
                                 {messages.map(msg => {
-                                    console.log(msg)
                                     if(msg.id === message.replied_message_id){
-                                        return <><b>{msg.author}:</b> {msg.content.slice(0, (message.content.length + 5) - msg.author.length)}...</>
+                                        return <span key={msg.id}><b>{msg.author}:</b> {msg.content.slice(0, (message.content.length + 5) - msg.author.length)}...</span>
                                     }
                                 })}
                             </span>
