@@ -5,18 +5,10 @@ import MessageForm from "./components/MessageForm"
 import NavigationBar from "./components/NavigationBar"
 import styles from './Messenger.module.css'
 import { protectedRedirect } from "../../../globalfunctions/redirect_functions"
+import { sendRequest } from "../../../globalfunctions/request_functions"
 
 function Messenger(){
-    const [points, setPoints] = useState([ // state to store chats(points) info 
-        {
-            point_name: "point1",
-            id: "1"
-        },
-        {
-            point_name: "point2",
-            id: "2"
-        },
-    ])
+    const [points, setPoints] = useState([]) // state to store chats(points) info 
 
     const [messages, setMessages] = useState([ // state to store messages
         {
@@ -57,6 +49,12 @@ function Messenger(){
             if(!match_name.length) navigate("*")
         }
     })
+
+    useEffect(() => {
+        sendRequest("GET", "http://127.0.0.1:5000/points")
+            .then(data => setPoints(data))
+            .catch(err => console.error(err))
+    }, [])
 
     return (
         <div className={styles["messenger-box"]}>
