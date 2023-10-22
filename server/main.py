@@ -22,5 +22,9 @@ def points():
         configure_cors(response, "http://localhost:3000", "GET", "Content-Type")
         return response
 
+@app.route("/points/<point_name>")
+def point(point_name):
+    return point_name
+
 if __name__ == "__main__":
     app.run(debug=True)
