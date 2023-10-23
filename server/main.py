@@ -24,7 +24,12 @@ def points():
 
 @app.route("/points/<point_name>", methods = ["GET", "POST"])
 def point(point_name):
-    return point_name
+    points = json.loads(read_file("./storage/points.json"))
+    point_identify_arr = list(map(lambda point: point["point_name"] == point_name, points))
+    if sum(point_identify_arr):
+        return point_name
+    else:
+        return "page not found"
 
 if __name__ == "__main__":
     app.run(debug=True)
