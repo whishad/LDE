@@ -14,6 +14,10 @@ def read_file(direct):
     with open(direct, "r") as file:
         return file.read()
 
+def write_file(direct, content):
+    with open(direct, "w") as file:
+        return file.write(content)
+
 @app.route("/points", methods = ["GET"])
 def points():
     if request.method == "GET":
