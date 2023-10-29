@@ -31,7 +31,11 @@ def point(point_name):
     points = json.loads(read_file("./storage/points.json"))
     point_identify_arr = list(map(lambda point: point["point_name"] == point_name, points))
     if sum(point_identify_arr):
-        return point_name
+        if request.method == "POST":
+            print(request.json)
+            return "Success"
+        elif request.method == "GET":
+            return point_name
     else:
         return "page not found"
 
