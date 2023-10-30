@@ -31,8 +31,11 @@ def point(point_name):
     points = json.loads(read_file("./storage/points.json"))
     point_identify_arr = list(map(lambda point: point["point_name"] == point_name, points))
     if sum(point_identify_arr):
+        messages = json.loads(read_file("./storage/messages.json"))
         if request.method == "POST":
-            print(request.json)
+            if not point_name in messages: messages[point_name] = []
+            messages[point_name].append(request.json)
+            write_file("./storage/messages.json", json.dumps(messages, indent=4))
             return "Success"
         elif request.method == "GET":
             return point_name
