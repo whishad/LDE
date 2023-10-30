@@ -17,10 +17,6 @@ function Messenger(){
 
     useEffect(() => {
         protectedRedirect(navigate, "*", (x) => {return !x})
-        if(current_point.point_name){
-            const match_name = points.filter(point => point.point_name === current_point.point_name)
-            if(!match_name.length) navigate("*")
-        }
     })
 
     useEffect(() => {
@@ -30,9 +26,16 @@ function Messenger(){
     }, [])
 
     useEffect(() => {
-        current_point.point_name && sendRequest("GET", `http://127.0.0.1:5000/points/${current_point.point_name}`)
-            .then(data => setMessages(data))
-            .catch(err => console.error(err))
+        if(current_point.point_name){
+            const match_name = points.filter(point => point.point_name === current_point.point_name)
+            if(match_name.length){
+                sendRequest("GET", `http://127.0.0.1:5000/points/${current_point.point_name}`)
+                    .then(data => setMessages(data))
+                    .catch(err => console.error(err))
+            }else{
+                navigate("*")
+            }
+        }
     }, [current_point])
 
     return (
