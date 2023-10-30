@@ -9,34 +9,7 @@ import { sendRequest } from "../../../globalfunctions/request_functions"
 
 function Messenger(){
     const [points, setPoints] = useState([]) // state to store chats(points) info 
-
-    const [messages, setMessages] = useState([ // state to store messages
-        {
-            author: "George",
-            author_pic_color: "#ffc31f",
-            message_type: "text",
-            content: "My name is George, i love pizza",
-            sent_time: "10:00",
-            id: 1,
-        },
-        {
-            author: "George",
-            author_pic_color: "#ffc31f",
-            message_type: "file",
-            content: "pizza-bot.py",
-            sent_time: "10:01",
-            id: 2,
-        },
-        {
-            author: "Martin",
-            author_pic_color: "#FF0000",
-            message_type: "reply",
-            content: "What else can this bot do?",
-            sent_time: "10:04",
-            replied_message_id: 2,
-            id: 3,
-        },
-    ])
+    const [messages, setMessages] = useState([]) // state to store messages
 
     const current_point = useParams() // getting current chat(point) name
 
@@ -55,6 +28,12 @@ function Messenger(){
             .then(data => setPoints(data))
             .catch(err => console.error(err))
     }, [])
+
+    useEffect(() => {
+        current_point.point_name && sendRequest("GET", `http://127.0.0.1:5000/points/${current_point.point_name}`)
+            .then(data => setMessages(data))
+            .catch(err => console.error(err))
+    }, [current_point])
 
     return (
         <div className={styles["messenger-box"]}>
