@@ -32,13 +32,15 @@ def point(point_name):
     point_identify_arr = list(map(lambda point: point["point_name"] == point_name, points))
     if sum(point_identify_arr):
         messages = json.loads(read_file("./storage/messages.json"))
+        if not point_name in messages: messages[point_name] = []
         if request.method == "POST":
-            if not point_name in messages: messages[point_name] = []
             messages[point_name].append(request.json)
             write_file("./storage/messages.json", json.dumps(messages, indent=4))
             return "Success"
         elif request.method == "GET":
-            return point_name
+            messages_response = jsonify(messages[point_name])
+            configure_cors(messages_response, "http://localhost:3000", "GET", "Content-Type")
+            return messages_response
     else:
         return "page not found"
 
