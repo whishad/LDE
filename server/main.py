@@ -43,6 +43,10 @@ def point(point_name):
             messages_response = jsonify(messages[point_name])
             configure_cors(messages_response, "http://localhost:3000", "GET", "Content-Type")
             return messages_response
+        elif request.method == "OPTIONS":
+            options_res = make_response()
+            configure_cors(options_res, "http://localhost:3000", "GET, POST, OPTIONS", "Content-Type")
+            return options_res
     else:
         return "page not found"
 
