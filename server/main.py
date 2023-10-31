@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 import json
 
 app = Flask(__name__)
@@ -36,7 +36,9 @@ def point(point_name):
         if request.method == "POST":
             messages[point_name].append(request.json)
             write_file("./storage/messages.json", json.dumps(messages, indent=4))
-            return "Success"
+            post_res = make_response({"message": "Success", "status_code": 200})
+            configure_cors(post_res, "http://localhost:3000", "POST", "Content-Type")
+            return post_res
         elif request.method == "GET":
             messages_response = jsonify(messages[point_name])
             configure_cors(messages_response, "http://localhost:3000", "GET", "Content-Type")
