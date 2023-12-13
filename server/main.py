@@ -26,7 +26,7 @@ def points():
         configure_cors(response, "http://localhost:3000", "GET", "Content-Type")
         return response
 
-@app.route("/points/<point_name>", methods = ["GET", "POST"])
+@app.route("/points/<point_name>", methods = ["GET", "POST", "OPTIONS"])
 def point(point_name):
     points = json.loads(read_file("./storage/points.json"))
     point_identify_arr = list(map(lambda point: point["point_name"] == point_name, points))
@@ -36,7 +36,7 @@ def point(point_name):
         if request.method == "POST":
             messages[point_name].append(request.json)
             write_file("./storage/messages.json", json.dumps(messages, indent=4))
-            post_res = make_response({"message": "Success", "status_code": 200})
+            post_res = make_response({"status_code": 200})
             configure_cors(post_res, "http://localhost:3000", "POST", "Content-Type")
             return post_res
         elif request.method == "GET":
