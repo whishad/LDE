@@ -2,6 +2,7 @@ import styles from '../Messenger.module.css'
 import arrow_svg from '../../../../resources/images/send_message_button_arrow.svg'
 import { useState } from 'react'
 import { useParams } from 'react-router'
+import { v4 } from 'uuid'
 import { sendRequest } from '../../../../globalfunctions/request_functions'
 import { getFromLocalStorage } from '../../../../globalfunctions/local_storarge_functions'
 
@@ -25,7 +26,7 @@ const MessageForm = () => {
                 const current_date = new Date()
                 return `${current_date.getHours()}:${current_date.getMinutes()}`
             })(),
-            id: 1,
+            id: v4(),
         }, 'application/json')
         setInputValue("")
     }
