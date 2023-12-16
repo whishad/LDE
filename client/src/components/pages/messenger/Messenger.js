@@ -25,7 +25,7 @@ function Messenger(){
             .catch(err => console.error(err))
     }, [])
 
-    useEffect(() => {
+    setTimeout(() => {
         if(current_point.point_name){
             const match_name = points.filter(point => point.point_name === current_point.point_name)
             if(match_name.length){
@@ -36,7 +36,7 @@ function Messenger(){
                 navigate("*")
             }
         }
-    }, [current_point])
+    }, 500)
 
     return (
         <div className={styles["messenger-box"]}>
