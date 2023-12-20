@@ -120,6 +120,7 @@
 }
 
 .message-text-content{
+    word-wrap: break-word;
     font-family: Rubik;
     font-size: 20px;
     font-weight: 400;
