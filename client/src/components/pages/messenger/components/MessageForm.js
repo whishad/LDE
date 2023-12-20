@@ -17,6 +17,7 @@ const MessageForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        inputValue.trim() &&
         sendRequest("POST", `http://localhost:5000/points/${current_point.point_name}`, {
             author: getFromLocalStorage("username"),
             author_pic_color: getFromLocalStorage("pic_color"),
