@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { setInLocalStorage, getFromLocalStorage } from '../../../globalfunctions/local_storarge_functions'
+import { setInLocalStorage } from '../../../globalfunctions/local_storarge_functions'
 import { useNavigate } from "react-router-dom"
 import styles from './Registration.module.css'
 import { protectedRedirect } from '../../../globalfunctions/redirect_functions'
@@ -11,6 +11,7 @@ function Registration(){
         {id:1, message: "Name must contain at least one symbol", active:false},
         {id:2, message: "Name cannot exceed 15 characters", active:false},
     ])
+    const [pictureColor, setPictureColor] = useState("") // state to store user picture color
     const navigate = useNavigate() // to navigate between pages
 
     useEffect(() => { // to check if the user is logged in
@@ -41,6 +42,19 @@ function Registration(){
         return true
     }
 
+    const getRandomHexColor = () => { // generate hex color
+        const r = Math.floor(Math.random() * 256)
+        const g = Math.floor(Math.random() * 256)
+        const b = Math.floor(Math.random() * 256)
+
+        const toHex = (num) => {
+            const hex = num.toString(16)
+            return hex.length === 1 ? "0" + hex : hex 
+        }
+
+        return `#${[toHex(r), toHex(g), toHex(b)].join("")}`
+    }
+
     return ( 
         <div className={styles["registration-page"]}>
             <div className={styles["registration-box"]}>
@@ -49,7 +63,10 @@ function Registration(){
                 <input name="username" type="text" placeholder="your name" value={inpval} onChange={handleInputChange} className={styles["input"]}/>
                 <button 
                 className={styles["btn"]} 
-                onClick={() => analyzeInputValue() && setInLocalStorage("username", inpval, ()=>navigate("/messenger"))}>Register</button>
+                onClick={() => 
+                    analyzeInputValue() && 
+                    setInLocalStorage("username", inpval, null) &
+                    setInLocalStorage("pic_color", getRandomHexColor(), () => navigate("/messenger"))}>Register</button>
             </div>
         </div>
     )
