@@ -1,14 +1,16 @@
 from flask import Flask, request, jsonify, make_response
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
 
-def configure_cors(obj, domain, methods, heads):
-    return ( 
-        obj.headers.add("Access-Control-Allow-Origin", domain), 
-        obj.headers.add("Access-Control-Allow-Methods", methods), 
-        obj.headers.add("Access-Control-Allow-Headers", heads) 
-    )
+CORS(app, resources={
+    r"/points/*": {
+        "origins" : "http://localhost:3000", 
+        "methods": ["GET, POST, OPTIONS"],
+        "allow_headers": "Content-Type"
+    }
+})
 
 def read_file(direct):
     with open(direct, "r") as file:
@@ -23,7 +25,6 @@ def points():
     if request.method == "GET":
         points = json.loads(read_file("./storage/points.json"))
         response = jsonify(points)
-        configure_cors(response, "http://localhost:3000", "GET", "Content-Type")
         return response
 
 @app.route("/points/<point_name>", methods = ["GET", "POST", "OPTIONS"])
@@ -37,15 +38,12 @@ def point(point_name):
             messages[point_name].append(request.json)
             write_file("./storage/messages.json", json.dumps(messages, indent=4))
             post_res = make_response({"status_code": 200})
-            configure_cors(post_res, "http://localhost:3000", "POST", "Content-Type")
             return post_res
         elif request.method == "GET":
             messages_response = jsonify(messages[point_name])
-            configure_cors(messages_response, "http://localhost:3000", "GET", "Content-Type")
             return messages_response
         elif request.method == "OPTIONS":
             options_res = make_response()
-            configure_cors(options_res, "http://localhost:3000", "GET, POST, OPTIONS", "Content-Type")
             return options_res
     else:
         return "page not found"
