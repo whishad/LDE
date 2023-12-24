@@ -26,6 +26,10 @@
     font-size: 36px;
 }
 
+.active-point-link-button{
+    background-color: var(--silver);
+}
+
 .message-form{
     width: 933px;
     display: flex;
