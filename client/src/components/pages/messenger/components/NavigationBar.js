@@ -6,7 +6,7 @@ const NavigationBar = ({points}) => {
     const current_point = useParams() // getting current chat(point) name
 
     const buttonIsActive = (button_point_name) => { // Activates/changes button background-color by returning a css class
-        if(current_point.point_name == button_point_name){
+        if(current_point.point_name === button_point_name){
             return "active-point-link-button"
         }
     }

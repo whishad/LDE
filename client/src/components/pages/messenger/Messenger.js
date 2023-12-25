@@ -36,7 +36,7 @@ function Messenger(){
                 navigate("*")
             }
         }
-    }, 500)
+    }, 100)
 
     return (
         <div className={styles["messenger-box"]}>
