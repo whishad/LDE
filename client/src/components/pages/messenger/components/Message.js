@@ -53,6 +53,7 @@ const Message = ({messages}) => {
                     </svg>
                     <div className={styles["message-info-div"]}>
                         <p className={styles["message-author-name"]}>{message.author}</p>
+                        <p className={styles["message-reply-button"]}>reply</p>
                         {generateMessageStructure(message)}
                         <p className={styles["message-sent-time"]}>{message.sent_time}</p>
                     </div>
