@@ -33,7 +33,13 @@ const MessageForm = () => {
     }
 
     return (
+        <>
         <form onSubmit={handleSubmit} className={styles["message-form"]}>
+            <div className={styles["reply-message-view"]}> 
+                <p className={styles["reply-message-content"]}>
+                    <span className={styles["reply-author-name"]}>Jhon</span>: this is reply message example.
+                </p>
+            </div>
             <input 
             type="text"
             value={inputValue}
@@ -44,6 +50,7 @@ const MessageForm = () => {
                 <img src={arrow_svg} alt="send message"/>
             </button>
         </form>
+        </>
     )
 }
 

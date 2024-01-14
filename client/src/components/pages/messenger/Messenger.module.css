@@ -32,13 +32,29 @@
 
 .message-form{
     width: 933px;
-    display: flex;
+    display: grid;
     align-self: end;
 }
 
+.reply-message-view{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110%;
+    height: 40px;
+    border-right: 5px solid #323232;
+    border-top: 5px solid #323232;
+    background: #FFF;
+}
+
+.reply-author-name{
+    font-weight: 700;
+}
+
 .message-input{
-    width: 100%;
+    width: 920px;
     height: 90px;
+    grid-row: 2;
     padding-left: 25px;
     border: 5px solid var(--jet);
     border-left: 0px;
@@ -52,7 +68,7 @@
 .message-button{
     width: 100px;
     min-height: 100px;
-    margin-right: -123px;
+    grid-row: 2;
     border: 5px solid var(--jet);
     border-left: 0;
     background: var(--neon-blue);
