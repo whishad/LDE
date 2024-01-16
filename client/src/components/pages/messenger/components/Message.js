@@ -1,7 +1,15 @@
 import styles from "../Messenger.module.css"
 import file_icon from "../../../../resources/images/file-icon.svg"
+import { useContext } from "react"
+import ReplyingMessageContext from "./contexts/ReplyingMessageContext"
 
 const Message = ({messages}) => {
+    const { setReplyingMessage  } = useContext(ReplyingMessageContext)
+
+    const handleReplyClick = (message) => {
+        setReplyingMessage(message)
+    }
+
     const generateMessageStructure = (message) => { //generates a message html structure
         switch (message.message_type){
             case "text":
@@ -53,7 +61,9 @@ const Message = ({messages}) => {
                     </svg>
                     <div className={styles["message-info-div"]}>
                         <p className={styles["message-author-name"]}>{message.author}</p>
-                        <p className={styles["message-reply-button"]}>reply</p>
+                        <p 
+                        className={styles["message-reply-button"]} 
+                        onClick={() => handleReplyClick(message)}>reply</p>
                         {generateMessageStructure(message)}
                         <p className={styles["message-sent-time"]}>{message.sent_time}</p>
                     </div>
