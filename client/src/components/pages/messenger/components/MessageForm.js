@@ -29,6 +29,7 @@ const MessageForm = () => {
                 const current_date = new Date()
                 return `${current_date.getHours()}:${current_date.getMinutes()}`
             })(),
+            from_point: current_point.point_name,
             id: v4(),
         }, 'application/json')
         setInputValue("")
