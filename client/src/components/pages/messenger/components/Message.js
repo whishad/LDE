@@ -4,10 +4,16 @@ import { useContext } from "react"
 import ReplyingMessageContext from "./contexts/ReplyingMessageContext"
 
 const Message = ({messages}) => {
-    const { setReplyingMessage  } = useContext(ReplyingMessageContext)
+    const { replyingMessage, setReplyingMessage  } = useContext(ReplyingMessageContext)
 
     const handleReplyClick = (message) => {
         setReplyingMessage(message)
+    }
+
+    const resizeMessageBoxIfReplying = (replyingMessage) => {
+        if (replyingMessage["author"]){
+            return {height: "478px"}
+        }
     }
 
     const generateMessageStructure = (message) => { //generates a message html structure
@@ -51,7 +57,7 @@ const Message = ({messages}) => {
         }
     }
     return (
-        <div className={styles["message-box"]}>
+        <div className={styles["message-box"]} style={resizeMessageBoxIfReplying(replyingMessage)}>
         {        
             messages.map( message => 
                 <div className={styles["message"]} key={message.id} >
