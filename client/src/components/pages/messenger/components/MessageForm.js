@@ -37,7 +37,7 @@ const MessageForm = () => {
     return (
         <>
         <form onSubmit={handleSubmit} className={styles["message-form"]}>
-            <div className={styles["reply-message-view"]}> 
+            <div className={styles["reply-message-view"]} style={replyingMessage.visible ? {visibility: "visible"} : {visibility: "collapse"}}> 
                 <p className={styles["reply-message-content"]}>
                     <span 
                     className={styles["reply-author-name"]} 

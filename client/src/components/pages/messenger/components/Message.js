@@ -7,6 +7,7 @@ const Message = ({messages}) => {
     const { replyingMessage, setReplyingMessage  } = useContext(ReplyingMessageContext)
 
     const handleReplyClick = (message) => {
+        message.visible = true
         setReplyingMessage(message)
     }
 
