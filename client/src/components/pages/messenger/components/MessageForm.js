@@ -11,6 +11,39 @@ const MessageForm = () => {
     const [inputValue, setInputValue] = useState("")
     const { replyingMessage } = useContext(ReplyingMessageContext)
 
+    const checkTheMessageType = () => {
+        if(replyingMessage["author"]){
+            return "reply"
+        }else{
+            return "text"
+        }
+    }
+
+    const generateMessageObject = () => {
+        const message = {
+            author: getFromLocalStorage("username"),
+            author_pic_color: getFromLocalStorage("pic_color"),
+            content: inputValue,
+            sent_time: (() => {
+                const current_date = new Date()
+                return `${current_date.getHours()}:${current_date.getMinutes()}`
+            })(),
+            from_point: current_point.point_name,
+            id: v4(),
+        }
+
+        const message_type = checkTheMessageType()
+
+        if(message_type === "text"){
+            message.message_type = "text"
+        }else if (message_type === "reply"){
+            message.message_type = "reply"
+            message.replied_message_id = replyingMessage.id
+        }
+
+        return message
+    }
+
     const handleInputChange = (e) => {
         setInputValue(e.target.value)
     }
@@ -20,18 +53,7 @@ const MessageForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         inputValue.trim() &&
-        sendRequest("POST", `http://localhost:5000/points/${current_point.point_name}`, {
-            author: getFromLocalStorage("username"),
-            author_pic_color: getFromLocalStorage("pic_color"),
-            message_type: "text",
-            content: inputValue,
-            sent_time: (() => {
-                const current_date = new Date()
-                return `${current_date.getHours()}:${current_date.getMinutes()}`
-            })(),
-            from_point: current_point.point_name,
-            id: v4(),
-        }, 'application/json')
+        sendRequest("POST", `http://localhost:5000/points/${current_point.point_name}`, generateMessageObject(),'application/json')
         setInputValue("")
     }
 
