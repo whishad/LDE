@@ -9,7 +9,7 @@ import ReplyingMessageContext from './contexts/ReplyingMessageContext'
 
 const MessageForm = () => {
     const [inputValue, setInputValue] = useState("")
-    const { replyingMessage } = useContext(ReplyingMessageContext)
+    const { replyingMessage, setReplyingMessage } = useContext(ReplyingMessageContext)
 
     const checkTheMessageType = () => {
         if(replyingMessage["author"]){
@@ -55,6 +55,7 @@ const MessageForm = () => {
         inputValue.trim() &&
         sendRequest("POST", `http://localhost:5000/points/${current_point.point_name}`, generateMessageObject(),'application/json')
         setInputValue("")
+        setReplyingMessage("")
     }
 
     return (
