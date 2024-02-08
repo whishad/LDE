@@ -52,10 +52,13 @@ function Messenger(){
             <ReplyingMessageContext.Provider value={{ replyingMessage, setReplyingMessage }}>
                 <NavigationBar points={points}/>
                 {current_point.point_name && 
-                <div>
-                    <Message messages={messages}/>
-                </div>}
-                {current_point.point_name && <MessageForm/>}
+                <>
+                    <div>
+                        <Message messages={messages}/>
+                    </div>
+                    <MessageForm/>
+                </>
+                }
             </ReplyingMessageContext.Provider>
         </div>
     )
